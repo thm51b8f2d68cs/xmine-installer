@@ -103,9 +103,7 @@ function install()
     fs.move(xroot .. xdata .. "excavations.txt", xroot .. xdata .. ".excavations.txt")
   end
   fs.move(xroot .. xdata .. "dirdata.txt", "/.dirdata.txt")
-  --[[fs.move(xroot .. xbin .. "getDirData.lua", "/.getDirData.lua")
-  fs.move(xroot .. xbin .. "/xmine.lua", "/xmine.lua")]]
-  --fs.delete("/xMineInstallation")
+  fs.move("getDirData.lua", "/.getDirData.lua")
   fs.delete("README.md")
 
   dirData = io.open("/.dirdata.txt", "w")
