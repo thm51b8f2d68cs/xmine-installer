@@ -122,7 +122,6 @@ function uninstall()
   if (not fs.exists("/.excavations.txt") and not fs.exists("/README.md")) then
     fs.move(xroot .. xdata .. ".excavations.txt", "/.excavations.txt")
   end
-  if (fs.exists(xroot))
   fs.delete(xroot)
   fs.delete(".dirdata.txt")
   fs.delete(".getDirData.lua")
