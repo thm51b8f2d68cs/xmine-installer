@@ -93,7 +93,7 @@ end
 
 function install()
   uninstall()
-  fs.copy("/xMineInstallation", xroot)
+  --fs.copy("/xMineInstallation", xroot)
   --If a backup exists, remove the current file and replace it with the backup
   if (fs.exists("/.excavations.txt")) then
     fs.delete(xroot .. xdata .. "/.excavations.txt")
@@ -102,9 +102,9 @@ function install()
     fs.move(xroot .. xdata .. "excavations.txt", xroot .. xdata .. ".excavations.txt")
   end
   fs.move(xroot .. xdata .. "dirdata.txt", "/.dirdata.txt")
-  fs.move(xroot .. xbin .. "getDirData.lua", "/.getDirData.lua")
-  fs.move(xroot .. xbin .. "/xmine.lua", "/xmine.lua")
-  fs.delete("/xMineInstallation")
+  --[[fs.move(xroot .. xbin .. "getDirData.lua", "/.getDirData.lua")
+  fs.move(xroot .. xbin .. "/xmine.lua", "/xmine.lua")]]
+  --fs.delete("/xMineInstallation")
   fs.delete("README.md")
 
   dirData = io.open("/.dirdata.txt", "w")
