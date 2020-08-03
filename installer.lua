@@ -76,11 +76,14 @@ function getInstallVersion()
   end]]
   print("\nSelect version.")
   userChoice = promptUser("[master/develop]")
+  print("\n")
   if (userChoice == "master") then
     shell.run("gitget thm51b8f2d68cs xmine master")
+    print("\n")
     install()
   elseif (userChoice == "develop") then
     shell.run("gitget thm51b8f2d68cs xmine develop")
+    print("\n")
     install()
   else
     print("Choose an option.")
