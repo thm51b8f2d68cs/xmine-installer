@@ -7,7 +7,7 @@ xdata = xdirdata.xdata
  
 function main()
   displayTitle()
-  installerWizard(promptUser())
+  installerWizard(promptUser("[install/uninstall/exit]"))
 end
  
 function displayTitle()
@@ -18,15 +18,15 @@ function displayTitle()
   os.sleep(1)
 end
 
-function promptUser()
-  print("[install/uninstall/exit]")
+function promptUser(choices)
+  print(choices)
   io.write(">")
   return io.read()
 end
  
 function installerWizard(userChoice)
   if (userChoice == "install") then
-    install()
+    getInstallVersion()
     promptRestart()
   elseif (userChoice == "uninstall") then
     uninstall()
@@ -39,6 +39,7 @@ function installerWizard(userChoice)
   end
 end
 
+--Unimplemented
 function checkForInstallationFolder()
   if (fs.exists("/xMineInstallation")) then
     return true
@@ -69,11 +70,25 @@ function reinstall()
   install()
 end
 
-function install()
-  --if (fs.exists("/.xmine"))
-  if(not checkForInstallationFolder()) then
+function getInstallVersion()
+  --[[if(not checkForInstallationFolder()) then
     shell.run("gitget thm51b8f2d68cs xmine develop")
+  end]]
+  print("Select version.")
+  userChoice = promptUser("[master/develop]")
+  if (userChoice == "master") then
+    shell.run("gitget thm51b8f2d68cs xmine master")
+    install()
+  elseif (userChoice == "develop") then
+    shell.run("gitget thm51b8f2d68cs xmine develop")
+    install()
+  else
+    print("Choose an option.")
+    getInstallVersion()
   end
+end
+
+function install()
   uninstall()
   fs.copy("/xMineInstallation", xroot)
   --If a backup exists, remove the current file and replace it with the backup
