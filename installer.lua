@@ -74,7 +74,7 @@ function getInstallVersion()
   --[[if(not checkForInstallationFolder()) then
     shell.run("gitget thm51b8f2d68cs xmine develop")
   end]]
-  print("Select version.")
+  print("\nSelect version.")
   userChoice = promptUser("[master/develop]")
   if (userChoice == "master") then
     shell.run("gitget thm51b8f2d68cs xmine master")
