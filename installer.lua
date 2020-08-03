@@ -78,10 +78,12 @@ function getInstallVersion()
   userChoice = promptUser("[master/develop]")
   print("\n")
   if (userChoice == "master") then
+    uninstall()
     shell.run("gitget thm51b8f2d68cs xmine master")
     print("\n")
     install()
   elseif (userChoice == "develop") then
+    uninstall()
     shell.run("gitget thm51b8f2d68cs xmine develop")
     print("\n")
     install()
@@ -92,7 +94,6 @@ function getInstallVersion()
 end
 
 function install()
-  uninstall()
   --fs.copy("/xMineInstallation", xroot)
   --If a backup exists, remove the current file and replace it with the backup
   if (fs.exists("/.excavations.txt")) then
@@ -121,6 +122,7 @@ function uninstall()
   if (not fs.exists("/.excavations.txt") and not fs.exists("/README.md")) then
     fs.move(xroot .. xdata .. ".excavations.txt", "/.excavations.txt")
   end
+  if (fs.exists(xroot))
   fs.delete(xroot)
   fs.delete(".dirdata.txt")
   fs.delete(".getDirData.lua")
