@@ -118,7 +118,7 @@ end
  
 function uninstall()
   --If no backup exists and this is not fresh install then backup
-  if (not fs.exists("/.excavations.txt")) then
+  if (not fs.exists("/.excavations.txt") and not fs.exists("/README.md")) then
     fs.move(xroot .. xdata .. ".excavations.txt", "/.excavations.txt")
   end
   fs.delete(xroot)
