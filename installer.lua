@@ -132,7 +132,7 @@ function exit()
 end
  
 function promptRestart()
-  print("Restart? [y/n]")
+  print("\nRestart? [y/n]")
   io.write(">")
   if (io.read() == "y") then
     os.reboot()
